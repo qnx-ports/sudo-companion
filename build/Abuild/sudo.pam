@@ -1,0 +1,5 @@
+auth sufficient pam_rootok.so no_warn
+auth requisite pam_qnx.so
+account requisite pam_qnx.so
+session requisite pam_qnx.so
+password requisite pam_qnx.so
