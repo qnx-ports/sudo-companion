@@ -5,7 +5,7 @@ if [ "${pkgver%_*}" != "$pkgver" ]; then
 else
     _realver=$pkgver
 fi
-pkgrel=4
+pkgrel=${pkgrel:-0}
 pkgdesc="Give certain users the ability to run some commands as root"
 url="https://www.sudo.ws"
 arch="all"
@@ -59,6 +59,7 @@ package() {
     install -m0444 "$srcdir"/sudo.pam "$pamdir"/sudo
 }
 
+options="$options ${DISABLE_CHECK:+!check}"
 sha512sums="
 c8abd6ca56e54a081c9ef1e9f6579d1db5b93ff857e60d1f58d1f425d7dc23c31c58d40b7819780688f66dfdf87a1f3bbe0a78387b007e2beb1b0e546203ea93  sudo-1.9.17p2.tar.gz
 d28bd08b9cb8f33fe5427283097488eb6fa6371d2f04f67279a936e326508a2c7c52547dc7118229a6da0787fbb738d588ef9e18c2095ead5949b44c2c7f59ee  fix-qnx.patch
